@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend-TaskManagement';
+
+  gotoPageSignUp(pageName:string){
+    this.router.navigate(['${pageName}'])
+  }
+  isSignInVisible = false;
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isSignInVisible = this.router.url === '/signup';
+      }
+    });
+  }
 }

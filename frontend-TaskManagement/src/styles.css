@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+.spacer {
+    flex: 1 1 auto;
+  }
+  .hero {
+    background-image: url('bg.jpg');
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .property-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .property-card {
+    width: 300px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .property-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
+  .property-details {
+    padding: 10px;
+  }
+  footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  .social-media a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  body{
+    background-color:burlywood;
+    
+  }
+  
+  

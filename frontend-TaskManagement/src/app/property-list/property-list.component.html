@@ -1,0 +1,11 @@
+<div class="property-list">
+    <div *ngFor="let property of properties" class="property-card">
+      <img [src]="property.image" alt="Property">
+      <div class="property-details">
+        <h2>{{property.title}}</h2>
+        <p>{{property.price}}</p>
+        <p>{{property.location}}</p>
+      </div>
+    </div>
+  </div>
+  
