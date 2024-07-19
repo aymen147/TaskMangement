@@ -1,4 +1,3 @@
-<!-- Registration Form - Bootstrap Brain Component -->
 <app-header></app-header>
 <section class="py-3 py-md-5 py-xl-8">
     <div class="container">
@@ -6,7 +5,7 @@
             <div class="col-12">
                 <div class="mb-5">
                     <h2 class="display-5 fw-bold text-center">Sign up</h2>
-                    <p class="text-center m-0">Already have an account? <a routerLink="/signin" routerLinkActive="active">Log in</a></p>
+                    <p class="text-center m-0">Already have an account? <a routerLink="/login" routerLinkActive="active">Log in</a></p>
                 </div>
             </div>
         </div>
@@ -14,35 +13,52 @@
             <div class="col-12 col-lg-10 col-xl-8">
                 <div class="row gy-5 justify-content-center">
                     <div class="col-12 col-lg-5">
-                        <form action="#!">
+                        <form [formGroup]="signUpForm">
                             <div class="row gy-3 overflow-hidden">
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control border-0 border-bottom rounded-0" name="username" id="username" placeholder="Username" required>
+                                        <input type="text" class="form-control border-0 border-bottom rounded-0" formControlName="username" placeholder="Username">
                                         <label for="username" class="form-label">Username</label>
+                                        <div *ngIf="signUpForm.get('username')?.touched && signUpForm.get('username')?.invalid" class="text-danger">
+                                            <small *ngIf="signUpForm.get('username')?.errors?.['required']">Username is required</small>
+                                            <small *ngIf="signUpForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters</small>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control border-0 border-bottom rounded-0" name="email" id="email" placeholder="name@example.com" required>
+                                        <input type="email" class="form-control border-0 border-bottom rounded-0" formControlName="email" placeholder="name@example.com">
                                         <label for="email" class="form-label">Email</label>
+                                        <div *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid" class="text-danger">
+                                            <small *ngIf="signUpForm.get('email')?.errors?.['required']">Email is required</small>
+                                            <small *ngIf="signUpForm.get('email')?.errors?.['email']">Email must be a valid email address</small>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control border-0 border-bottom rounded-0" name="password" id="password" placeholder="Password" required>
+                                        <input type="password" class="form-control border-0 border-bottom rounded-0" formControlName="password" placeholder="Password">
                                         <label for="password" class="form-label">Password</label>
+                                        <div *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid" class="text-danger">
+                                            <small *ngIf="signUpForm.get('password')?.errors?.['required']">Password is required</small>
+                                            <small *ngIf="signUpForm.get('password')?.errors?.['minlength']">Password must contain at least 8 character</small>
+                                            <small *ngIf="signUpForm.get('password')?.errors?.['pattern']">Password must contain an uppercase letter, a lowercase letter, a number, and a special character</small>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control border-0 border-bottom rounded-0" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                                        <input type="password" class="form-control border-0 border-bottom rounded-0" formControlName="confirm_password" placeholder="Confirm Password">
                                         <label for="confirm_password" class="form-label">Confirm Password</label>
+                                        <div *ngIf="signUpForm.get('confirm_password')?.touched && signUpForm.get('confirm_password')?.invalid" class="text-danger">
+                                            <small *ngIf="signUpForm.get('confirm_password')?.errors?.['required']">Confirm Password is required</small>
+                                            <small *ngIf="signUpForm.get('confirm_password')?.errors?.['mustMatch']">Passwords must match</small>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">
-                                        <button class="btn btn-lg btn-dark rounded-0 fs-6" type="submit">Sign up</button>
+                                        <button class="btn btn-lg btn-dark rounded-0 fs-6" (click)="signup()" [disabled]="signUpForm.invalid">Sign up</button>
                                     </div>
                                 </div>
                             </div>
