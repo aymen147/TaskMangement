@@ -9,10 +9,14 @@
             <div class="right-widget ms-auto ms-lg-0 me-3 me-lg-0 order-lg-3">
                 <ul class="d-flex align-items-center style-none">
                     <li>
-                        <a class="btn-one" routerLink="/login" routerLinkActive="active">
+                        <a *ngIf="!isLoggedIn" class="btn-one" routerLink="/login" routerLinkActive="active">
                             <i class="fa-regular fa-lock"></i>
                             <span>Login</span>
-                        </a>
+                          </a>
+                          <a *ngIf="isLoggedIn" class="btn-one" (click)="logout()">
+                            <i class="fa-regular fa-lock"></i>
+                            <span>Logout</span>
+                          </a>
                     </li>
                     <li class="d-none d-md-inline-block ms-3">
                         <a class="btn-two" target="_blank" href="/dashboard/add-property">
@@ -32,7 +36,7 @@
                     </a>
                 </div>
             </li>
-            <li class="nav-item dashboard-menu"><a class="nav-link" target="_blank" href="/dashboard/dashboard-index">Dashboard</a>
+            <li class="nav-item dashboard-menu"><a routerLink="/dashbord" routerLinkActive="active">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>

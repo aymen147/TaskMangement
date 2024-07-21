@@ -35,6 +35,7 @@ export class LoginComponent {
         const jwtToken = response.jwtToken;
         localStorage.setItem('JWT', jwtToken);
         this.router.navigateByUrl('/home');
+        //window.location.reload();
       }
       
     },

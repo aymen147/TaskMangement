@@ -13,6 +13,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { HeaderDashbordComponent } from './header-dashbord/header-dashbord.component';
+import { ListUserComponent } from './list-user/list-user.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     HeroComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderDashbordComponent,
+    ListUserComponent,
+    SidebarComponent,
+    UpdateUserComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

@@ -53,7 +53,7 @@ export class SignUpComponent implements OnInit{
     })
   }
   goToHome(){
-    this.router.navigate(['/home'])
+    this.router.navigate(['/login'])
   }
   onSubmit(){
     if (this.signUpForm.invalid) {

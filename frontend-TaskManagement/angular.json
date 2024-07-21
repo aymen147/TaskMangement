@@ -37,10 +37,19 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/vendor/jquery/jquery.min.js",
+              "src/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "src/js/sb-admin-2.min.js",
+              "src/vendor/chart.js/Chart.min.js",
+              "src/js/demo/chart-area-demo.js",
+              "src/js/demo/chart-pie-demo.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
