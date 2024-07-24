@@ -1,5 +1,7 @@
 package com.springjwt.dto;
 
-public record AuthenticationResponse(String jwtToken) {
+import com.springjwt.entities.User;
+
+public record AuthenticationResponse(String jwtToken, User user) {
 
 }

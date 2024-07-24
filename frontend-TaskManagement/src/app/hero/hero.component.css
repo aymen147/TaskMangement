@@ -1,9 +1,0 @@
-.btn-one {
-    background-color: transparent; /* Transparent background */
-    color:#333; /* Text color */
-    border: 2px solid #333; /* Border color */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    width: 150px;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Transition effects */
-}

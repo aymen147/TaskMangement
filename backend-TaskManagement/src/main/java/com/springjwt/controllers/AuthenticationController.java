@@ -2,6 +2,8 @@ package com.springjwt.controllers;
 
 import com.springjwt.dto.AuthenticationDTO;
 import com.springjwt.dto.AuthenticationResponse;
+import com.springjwt.entities.User;
+import com.springjwt.repositories.UserRepository;
 import com.springjwt.services.jwt.UserDetailsServiceImpl;
 import com.springjwt.util.JwtUtil;
 import jakarta.servlet.http.HttpServletResponse;
@@ -29,6 +31,8 @@ public class AuthenticationController {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping("/authenticate")
     public AuthenticationResponse createAuthenticationToken(@RequestBody AuthenticationDTO authenticationDTO, HttpServletResponse response) throws BadCredentialsException, DisabledException, UsernameNotFoundException, IOException {
@@ -40,12 +44,10 @@ public class AuthenticationController {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "User is not activated");
             return null;
         }
-
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationDTO.getEmail());
-
+        final User user = userRepository.findFirstByEmail(userDetails.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails.getUsername());
-
-        return new AuthenticationResponse(jwt);
+        return new AuthenticationResponse(jwt,user);
 
     }
 

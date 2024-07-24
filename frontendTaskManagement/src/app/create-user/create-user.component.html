@@ -1,0 +1,45 @@
+<app-sidebar-admin></app-sidebar-admin>
+<div class="container" style="margin-top: 100px;">
+    <h1>Create Admin</h1>
+    <form [formGroup]="CreateUserForm">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username" name="username">
+          <div *ngIf="CreateUserForm.get('username')?.touched && CreateUserForm.get('username')?.invalid" class="text-danger">
+            <small *ngIf="CreateUserForm.get('username')?.errors?.['required']">Username is required</small>
+            <small *ngIf="CreateUserForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters</small>
+        </div>
+        </div>
+      
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" formControlName="email" name="email">
+          <div *ngIf="CreateUserForm.get('email')?.touched && CreateUserForm.get('email')?.invalid" class="text-danger">
+            <small *ngIf="CreateUserForm.get('email')?.errors?.['required']">Email is required</small>
+            <small *ngIf="CreateUserForm.get('email')?.errors?.['email']">Email must be a valid email address</small>
+        </div>
+        </div>
+      
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password" name="password">
+          <div *ngIf="CreateUserForm.get('password')?.touched && CreateUserForm.get('password')?.invalid" class="text-danger">
+            <small *ngIf="CreateUserForm.get('password')?.errors?.['required']">Password is required</small>
+            <small *ngIf="CreateUserForm.get('password')?.errors?.['minlength']">Password must contain at least 8 character</small>
+            <small *ngIf="CreateUserForm.get('password')?.errors?.['pattern']">Password must contain an uppercase letter, a lowercase letter, a number, and a special character</small>
+            </div>
+        </div>
+      
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" formControlName="confirm_password" name="confirmPassword">
+          <div *ngIf="CreateUserForm.get('confirm_password')?.touched && CreateUserForm.get('confirm_password')?.invalid" class="text-danger">
+            <small *ngIf="CreateUserForm.get('confirm_password')?.errors?.['required']">Confirm Password is required</small>
+            <small *ngIf="CreateUserForm.get('confirm_password')?.errors?.['mustMatch']">Passwords must match</small>
+        </div>
+        </div>
+      
+        <button type="submit" class="btn btn-primary" (click)="Submit()" [disabled]="CreateUserForm.invalid">Submit</button>
+      </form>
+       
+</div>

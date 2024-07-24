@@ -1,0 +1,22 @@
+<header>
+    <div class="logo">
+        <img src="logo.jpg" alt="logo">
+        <strong><p style="color:dodgerblue;margin-top: 15px;margin-left: 10px;font-weight: 10px;">Planner</p></strong>
+    </div>
+    <ul class="navbar">
+        <li><a routerLink="/home" routerLinkActive="active" class="active">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a routerLink="/dashbord" routerLinkActive="active">Services</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="main">
+        <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active" class="user"><i class="ri-user-fill"></i><span style="color:white"></span>Sign In</a>
+        <a *ngIf="!isLoggedIn" routerLink="/signup" routerLinkActive="active" class="">Registre</a>
+        <div *ngIf="isLoggedIn">
+            <a (click)="logout()" class="user"><i class="ri-user-fill"></i><span style="color:white"></span>Logout</a>
+        </div>
+        <div class="bx bx-menu" id="menu-icon">
+        </div>
+    </div>
+</header>

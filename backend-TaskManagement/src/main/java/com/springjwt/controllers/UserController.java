@@ -1,8 +1,11 @@
 package com.springjwt.controllers;
 
 import ch.qos.logback.classic.encoder.JsonEncoder;
+import com.springjwt.entities.Role;
+import com.springjwt.entities.RoleName;
 import com.springjwt.entities.User;
 import com.springjwt.exceptions.RessourceNotFoundException;
+import com.springjwt.repositories.RoleRepository;
 import com.springjwt.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/")
 public class UserController {
+    @Autowired
+    private RoleRepository roleRepository;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -48,5 +53,13 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(UserDetails.getPassword()));
         User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
+    }
+    @PostMapping("/users")
+    public User createUser(@RequestBody User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Role role;
+        role = roleRepository.findByName(RoleName.ROLE_ADMIN);
+        user.getRoles().add(role);
+        return userRepository.save(user);
     }
 }
