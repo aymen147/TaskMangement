@@ -16,7 +16,7 @@ public class Task {
     private String description;
 
     @Column(name = "status")
-    private Boolean status;
+    private String status;
 
     @Column(name = "createdAt")
     private Date createdAt;
@@ -27,13 +27,23 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    public Task(String title, String description, Boolean status, Date createdAt, Date updateAt) {
+    public Task(String title, String description, String status, Date createdAt, Date updateAt, User user) {
         this.title = title;
         this.description = description;
         this.status = status;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
+        this.user = user;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Task(){
 
     }
@@ -50,7 +60,7 @@ public class Task {
         this.description = description;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -74,7 +84,7 @@ public class Task {
         return description;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 

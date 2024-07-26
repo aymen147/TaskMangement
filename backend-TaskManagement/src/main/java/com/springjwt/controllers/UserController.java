@@ -39,13 +39,13 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getEmployeeById(@PathVariable Long id){
+    public ResponseEntity<User> getUserById(@PathVariable Long id){
         User employee = userRepository.findById(id)
                 .orElseThrow(() -> new RessourceNotFoundException("User not exist with id:"+ id));
         return ResponseEntity.ok(employee);
     }
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateEmployee(@PathVariable Long id, @RequestBody User UserDetails){
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User UserDetails){
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RessourceNotFoundException("Employee not exist with id :" + id));
         user.setUsername(UserDetails.getUsername());

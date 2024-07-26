@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,9 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
+import { UpdateTaskComponent } from './update-task/update-task.component';
 
 @NgModule({
   declarations: [
@@ -37,14 +41,18 @@ import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
     UpdateUserComponent,
     CreateUserComponent,
     TaskListComponent,
-    SidebarAdminComponent
+    SidebarAdminComponent,
+    UnauthorizedComponent,
+    CreateTaskComponent,
+    UpdateTaskComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    DragDropModule
   ],
   providers: [
     provideClientHydration(),

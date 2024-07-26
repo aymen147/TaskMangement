@@ -1,0 +1,37 @@
+<app-sidebar></app-sidebar>
+<!-- Working version of https://dribbble.com/shots/14552329--Exploration-Task-Management-Dashboard -->
+<div class='container' style="margin-left: 125px;margin-top: 100px;">
+  <main class='project'>
+    <div class='project-info'>
+      <h1>Create task</h1>
+      <br>
+      <form>
+        <div class="form-group" (ngSubmit)="AddTask()" >
+          <label for="exampleFormControlInput1">Title</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" name="title"
+          [(ngModel)]="task.title">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Status</label>
+          <select class="form-control" id="exampleFormControlSelect1" name="status"
+          [(ngModel)]="task.status">
+            <option>Task Ready</option>
+            <option>In Progress</option>
+            <option>Needs Review</option>
+            <option>Done</option>
+          </select>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Description</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="task.description" rows="3" name="description"></textarea>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" (click)="AddTask()">Submit</button>
+      </form>
+    </div>
+    </main>
+</div>
+    

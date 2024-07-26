@@ -14,6 +14,7 @@ import { Role } from '../role';
 export class LoginComponent {
   loginForm!: FormGroup;
   errorMessage: any;
+  UserAuth: User = new User()
 
   constructor(
     private service: AuthService,
@@ -37,16 +38,25 @@ export class LoginComponent {
         const jwtToken = response.jwtToken;
         localStorage.setItem('JWT', jwtToken);
         localStorage.setItem('username',response.user.username);
+        localStorage.setItem('id',response.user.id.toString());
+        this.UserAuth.id = response.user.id
+        this.UserAuth.email = response.user.email;
+        this.UserAuth.password = response.user.password;
+        this.UserAuth.roles = response.user.roles;
+        this.UserAuth.username = response.user.username;
+        localStorage.setItem('user',JSON.stringify(this.UserAuth));
         for(let i=0;i<response.user.roles.length;i++)
         {
           if(response.user.roles[i].name == 'ROLE_ADMIN'){
             console.log("Admin");
+            localStorage.setItem('role','admin');
             this.router.navigateByUrl('/dashbord');
           }
             
           if(response.user.roles[i].name == 'ROLE_DEVELOPPEUR')
            {
-            console.log("User");
+            console.log("Developpeur");
+            localStorage.setItem('role','developpeur');
             this.router.navigateByUrl('/Tasks');
            } 
         }

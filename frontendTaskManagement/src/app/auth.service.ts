@@ -11,7 +11,16 @@ export class AuthService {
   [x: string]: any;
   
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('JWT');
+    if (typeof localStorage !== 'undefined') {
+      const token = localStorage.getItem('JWT');
+      return token != null;
+    }
+    return false;
+  }
+  hasRoleAdmin(): boolean{
+    if (localStorage.getItem('role') == 'admin')
+      return true;
+    return false
   }
 
   constructor(

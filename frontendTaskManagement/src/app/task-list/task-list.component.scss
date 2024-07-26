@@ -27,11 +27,6 @@
     align-items:center;
   }
   
-  .app {
-    background-color:var(--bg);
-    width:100%;
-    min-height:100vh;
-  }
   
   h1 {
     font-size:30px;
@@ -360,4 +355,20 @@
   }
   .task{
     background: #fff;
+}
+.task {
+  width: 250px; /* Set a fixed width */
+  word-wrap: break-word; /* Break long words */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+  white-space: nowrap; /* Prevent line breaks */
+}
+
+.task__description {
+  white-space: normal; /* Allow line breaks within description */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-box-orient: vertical;
 }

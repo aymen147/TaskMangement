@@ -10,17 +10,24 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { authGuard } from './auth.guard';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { RoleGuard } from './role.guard';
+import { CreateTaskComponent } from './create-task/create-task.component';
+import { UpdateTaskComponent } from './update-task/update-task.component';
 
 const routes: Routes = [
   {path:"signin",component:SignInComponent},
   {path:"home",component:HomeComponent},
   {path:"signup",component:SignUpComponent},
   {path:"login",component:LoginComponent},
-  {path:"dashbord",component:HeaderDashbordComponent,canActivate:[authGuard]},
-  {path:"users",component:ListUserComponent,canActivate:[authGuard]},
-  {path:"update/:id",component:UpdateUserComponent,canActivate:[authGuard]},
-  {path:"createAdmin",component:CreateUserComponent,canActivate:[authGuard]},
+  {path:"dashbord",component:HeaderDashbordComponent,canActivate:[authGuard,RoleGuard]},
+  {path:"users",component:ListUserComponent,canActivate:[authGuard,RoleGuard]},
+  {path:"update/:id",component:UpdateUserComponent,canActivate:[authGuard,RoleGuard]},
+  {path:"updateTask/:id",component:UpdateTaskComponent,canActivate:[authGuard]},
+  {path:"createAdmin",component:CreateUserComponent,canActivate:[authGuard,RoleGuard]},
   {path:"Tasks",component:TaskListComponent,canActivate:[authGuard]},
+  {path:"unauthorized", component:UnauthorizedComponent},
+  {path:"Tasks/createTask",component:CreateTaskComponent,canActivate:[authGuard]},
   {path:"",redirectTo: "home",pathMatch:'full'}
 ];
 
@@ -28,4 +35,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+ }
