@@ -15,6 +15,7 @@
         <a *ngIf="!isLoggedIn" routerLink="/signup" routerLinkActive="active" class="">Registre</a>
         <div *ngIf="isLoggedIn">
             <a (click)="logout()" class="user"><i class="ri-user-fill"></i><span style="color:white"></span>Logout</a>
+            <button *ngIf="isAdmin">Dashbord</button>
         </div>
         <div class="bx bx-menu" id="menu-icon">
         </div>

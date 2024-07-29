@@ -41,6 +41,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "src/js/script.js"
             ],
             "server": "src/main.server.ts",
             "prerender": true,

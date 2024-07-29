@@ -7,7 +7,9 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(17px);
+    --webkit-backdrop-filter: blur(17px);
     padding: 28px 12%;
     transition: all .50s ease;
    

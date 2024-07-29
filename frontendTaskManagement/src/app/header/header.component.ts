@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private router: Router, private service: AuthService) { }
 
@@ -16,6 +18,23 @@ export class HeaderComponent implements OnInit {
     if (this.isLocalStorageAvailable()) {
       this.isLoggedIn = !!localStorage.getItem('JWT');
     }
+    if (typeof window !== 'undefined') {
+      const userJson = localStorage.getItem('user');
+      if (userJson) {
+        const user: User = JSON.parse(userJson);
+        for(let i=0;i<user.roles.length;i++)
+          {
+            if(user.roles[i].name == 'ROLE_ADMIN'){
+              this.isAdmin = true;
+            }
+            
+          }
+      } else {
+        //console.error('User not found in localStorage');
+      }
+    } else {
+      //console.error('localStorage is not available');
+  }
   }
 
   isLocalStorageAvailable(): boolean {

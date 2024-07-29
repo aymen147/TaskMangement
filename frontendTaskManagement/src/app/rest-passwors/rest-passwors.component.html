@@ -1,0 +1,62 @@
+
+<app-header></app-header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="py-3 py-md-5 py-xl-8">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-5">
+            <h2 class="display-5 fw-bold text-center">Rest Password</h2>
+            <p class="text-center m-0">Email doesnt rescived <a routerLink="/signup" routerLinkActive="active">Try agin</a></p>
+            
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+          <div class="row gy-5 justify-content-center">
+            <div class="col-12 col-lg-5">
+              <form [formGroup]="RestPasswordForm">
+
+                <div class="row gy-3 overflow-hidden">
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <input formControlName="password" type="password" class="form-control border-0 border-bottom rounded-0" name="password" id="password">
+                            <label for="password" class="form-label">Password</label>
+                            <div *ngIf="RestPasswordForm.get('password')?.touched && RestPasswordForm.get('password')?.invalid" class="text-danger">
+                                <small *ngIf="RestPasswordForm.get('password')?.errors?.['required']">Password is required</small>
+                                <small *ngIf="RestPasswordForm.get('password')?.errors?.['minlength']">Password must contain at least 8 character</small>
+                                <small *ngIf="RestPasswordForm.get('password')?.errors?.['pattern']">Password must contain an uppercase letter, a lowercase letter, a number, and a special character</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <input formControlName="confirm_password" type="password" class="form-control border-0 border-bottom rounded-0" name="passwordConf" id="passwordConf">
+                            <label for="password" class="form-label">Confirm Password</label>
+                            <div *ngIf="RestPasswordForm.get('confirm_password')?.touched && RestPasswordForm.get('confirm_password')?.invalid" class="text-danger">
+                                <small *ngIf="RestPasswordForm.get('confirm_password')?.errors?.['required']">Password is required</small>
+                                <small *ngIf="RestPasswordForm.get('confirm_password')?.errors?.['mustMatch']">Passwords must match</small>
+                            </div>
+                        </div>
+                    </div>
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button class="btn btn-lg btn-dark rounded-0 fs-6"
+                       type="submit" [disabled]="RestPasswordForm.invalid" (click)="Submit()">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+  </section>
+

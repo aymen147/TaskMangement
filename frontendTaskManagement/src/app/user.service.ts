@@ -7,7 +7,9 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl ="http://localhost:8090/api/v1/users"
+  private baseUrl ="http://localhost:8090/api/v1/users";
+  private baseUrl2 ="http://localhost:8090/api/v1/user";
+  
 
   getEmployeesList():Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.baseUrl}`); 
@@ -21,6 +23,9 @@ export class UserService {
   }
   getUserById(id:number):Observable<User>{
     return this.httpClient.get<User>(`${this.baseUrl}/${id}`);
+  }
+  getUserByEmail(email:string):Observable<User>{
+    return this.httpClient.get<User>(`${this.baseUrl2}/${email}`);
   }
   updateUser(id:number,user:User){
     return this.httpClient.put(`${this.baseUrl}/${id}`,user);

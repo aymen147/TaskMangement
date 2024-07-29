@@ -24,6 +24,9 @@ import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
+import { EmailForgetPassComponent } from './email-forget-pass/email-forget-pass.component';
+import { RestPassworsComponent } from './rest-passwors/rest-passwors.component';
+import { OtpComponent } from './otp/otp.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { UpdateTaskComponent } from './update-task/update-task.component';
     SidebarAdminComponent,
     UnauthorizedComponent,
     CreateTaskComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    EmailForgetPassComponent,
+    RestPassworsComponent,
+    OtpComponent
   ],
   imports: [
     BrowserModule,

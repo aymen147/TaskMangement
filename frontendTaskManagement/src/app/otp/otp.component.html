@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="container">
+    <div class="otp-box" style="margin-top: 200px; width: 500px;">
+        <h2>OTP Verification</h2>
+        <p>Code has been sent to *****1234</p>
+        <div *ngIf="errorMessage" class="text-danger">
+            {{ errorMessage }}
+          </div> 
+        <div class="otp-inputs">
+            <input type="text" maxlength="1" id="in1">
+            <input type="text" maxlength="1" id="in2">
+            <input type="text" maxlength="1" id="in3">
+            <input type="text" maxlength="1" id="in4">
+            <input type="text" maxlength="1" id="in5">
+        </div>
+        <p>Didn't get the OTP? <a href="#">Resend</a></p>
+        <button id="verify-btn" (click)="verifyOTP()">Verify</button>
+    </div>
+</div>

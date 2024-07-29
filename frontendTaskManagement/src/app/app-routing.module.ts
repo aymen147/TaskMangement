@@ -14,6 +14,9 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { RoleGuard } from './role.guard';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
+import { EmailForgetPassComponent } from './email-forget-pass/email-forget-pass.component';
+import { RestPassworsComponent } from './rest-passwors/rest-passwors.component';
+import { OtpComponent } from './otp/otp.component';
 
 const routes: Routes = [
   {path:"signin",component:SignInComponent},
@@ -28,6 +31,9 @@ const routes: Routes = [
   {path:"Tasks",component:TaskListComponent,canActivate:[authGuard]},
   {path:"unauthorized", component:UnauthorizedComponent},
   {path:"Tasks/createTask",component:CreateTaskComponent,canActivate:[authGuard]},
+  {path:"EmailForgetPass",component:EmailForgetPassComponent},
+  {path:"RestPassword/:id",component:RestPassworsComponent},
+  {path:"OTP/:id",component:OtpComponent},
   {path:"",redirectTo: "home",pathMatch:'full'}
 ];
 

@@ -1,0 +1,67 @@
+
+<app-header></app-header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="py-3 py-md-5 py-xl-8">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-5">
+            <h2 class="display-5 fw-bold text-center">Rest Password</h2>
+            <p class="text-center m-0">Please Enter Your Email <a routerLink="/signup" routerLinkActive="active">Try agin</a></p>
+            
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+          <div class="row gy-5 justify-content-center">
+            <div class="col-12 col-lg-5">
+              <form [formGroup]="EmailRestPassForm">
+
+                <div class="row gy-3 overflow-hidden">
+                  <div *ngIf="errorMessage" class="text-danger">
+                    {{ errorMessage }}
+                  </div>  
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input formControlName="email" type="email" class="form-control border-0 border-bottom rounded-0" name="email" id="email" placeholder="name@example.com">
+                      <label for="email" class="form-label">Email</label>
+                      <div *ngIf="EmailRestPassForm.get('email')?.touched && EmailRestPassForm.get('email')?.invalid" class="text-danger">
+                        <small *ngIf="EmailRestPassForm.get('email')?.errors?.['required']">Email is required</small>
+                        <small *ngIf="EmailRestPassForm.get('email')?.errors?.['email']">Email must be a valid email address</small>
+                    </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-12">
+                    <div class="row justify-content-between">
+                      <div class="col-6">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
+                          <label class="form-check-label text-secondary" for="remember_me">
+                            Remember me
+                          </label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button class="btn btn-lg btn-dark rounded-0 fs-6"
+                       type="submit" [disabled]="EmailRestPassForm.invalid" (click)="Submit()">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+  </section>
